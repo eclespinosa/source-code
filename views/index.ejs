@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Articles</title>
+  </head>
+  <body>
+    <form action="/articles/new" method="get">
+      <button>Create Article</button>
+    </form>
+
+    <% for(let article of articles) {%>
+    <div>
+      <h1><%= article.title %></h1>
+      <p>
+        <%= article.content.slice(0, 21) %>....
+        <a href="/articles/<%= article._id %> ">Read</a>
+      </p>
+      <p><%= article.dateCreated.split(" ").slice(0,4).join(" ") %></p>
+    </div>
+
+    <form action="/articles/<%= article._id %>/edit ">
+      <button>Edit</button>
+    </form>
+    <form
+      action="/articles/<%= article._id %>/delete?_method=DELETE"
+      method="POST"
+    >
+      <button>Delete</button>
+    </form>
+    <% } %>
+  </body>
+</html>

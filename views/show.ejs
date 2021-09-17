@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= article.title %></title>
+  </head>
+  <body>
+    <a href="/">home</a>
+    <h1><%= article.title %></h1>
+    <p><%= article.content %></p>
+    <p><%= article.dateCreated.split(" ").slice(0,4).join(" ") %></p>
+    <span><%= article.votes %> Votes</span>
+
+    <!-- Upvote -->
+    <form
+      action="/articles/<%= article._id %>/upvote?_method=PUT"
+      method="POST"
+    >
+      <button>Upvote</button>
+    </form>
+
+    <!-- downvote -->
+    <form
+      action="/articles/<%= article._id %>/downvote?_method=PUT"
+      method="POST"
+    >
+      <button>Downvote</button>
+    </form>
+  </body>
+</html>
